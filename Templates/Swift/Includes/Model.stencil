@@ -7,6 +7,8 @@
 public typealias {{ type }} = {{ simpleType }}
 {% elif refType %}
 public typealias {{ type }} = {{ refType }}
+{% elif arrayType %}
+public typealias {{ type }} = {{ arrayType }}
 {% else %}
 public class {{ type }}: {% if parent %}{{ parent.type }}{% else %}JSONDecodable, JSONEncodable, PrettyPrintable{% endif %} {
     {% for enum in enums %}
