@@ -88,6 +88,8 @@ public class CodeFormatter {
             }
         case .reference:
             context["refType"] = getSchemaType(name: schema.name, schema: schema.value)
+        case .array:
+            context["arrayType"] = getSchemaType(name: schema.name, schema: schema.value)
         default: break
         }
 
