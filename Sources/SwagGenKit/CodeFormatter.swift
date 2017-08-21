@@ -254,6 +254,23 @@ public class CodeFormatter {
         context["name"] = getName(property.name)
         context["value"] = property.name
         context["type"] = getSchemaType(name: property.name, schema: property.schema)
+        switch property.schema.type {
+        case .object(let schema) where !schema.properties.isEmpty:
+            context["inlineDefinition"] = getDefinitionContext(SwaggerObject(name: getModelType(property.name), value: property.schema))
+        case .allOf:
+            context["inlineDefinition"] = getDefinitionContext(SwaggerObject(name: getModelType(property.name), value: property.schema))
+        case .array(let schema):
+            guard case let .single(itemSchema) = schema.items else {
+                break
+            }
+            switch itemSchema.type {
+            case .simple: break
+            case .reference: break
+            default:
+                context["inlineDefinition"] = getDefinitionContext(SwaggerObject(name: getModelType(property.name), value: itemSchema))
+            }
+        default: break
+        }
 
         return context
     }

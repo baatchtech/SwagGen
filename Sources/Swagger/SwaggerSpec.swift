@@ -42,6 +42,11 @@ public protocol NamedMappable {
 public struct SwaggerObject<T: JSONObjectConvertible> {
     public let name: String
     public let value: T
+
+    public init(name: String, value: T) {
+        self.name = name
+        self.value = value
+    }
 }
 
 extension SwaggerSpec {
