@@ -10,3 +10,7 @@ install:
 	cp -f $(BUILD_PATH) $(INSTALL_PATH)
 uninstall:
 	rm -f $(INSTALL_PATH)
+
+.PHONY: release
+release:
+	swift build -c release -Xswiftc -static-stdlib
