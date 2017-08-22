@@ -276,6 +276,7 @@ public class CodeFormatter {
             }
         default: break
         }
+        context["enum"] = property.enumValue.map { getEnumContext($0) }
 
         return context
     }
