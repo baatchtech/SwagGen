@@ -251,9 +251,13 @@ public class SwiftFormatter: CodeFormatter {
         if inbuiltTypes.contains(name) {
             return "\(name)Type"
         }
+        if name == "Type" {
+            // [HACK] Overriding `Type` does not work well in Swift
+            return "LocalType"
+        }
         return "`\(name)`"
     }
-    
+
     override func getEscapedName(_ name: String) -> String {
         return "`\(name)`"
     }
