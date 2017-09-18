@@ -37,6 +37,7 @@ public enum StringFormat: RawRepresentable {
         case ipv6
         case password
         case uri
+        case uuid
     }
 }
 
@@ -48,4 +49,3 @@ extension StringItem {
         minLength = (jsonDictionary.json(atKeyPath: "minLength")) ?? 0
     }
 }
-
