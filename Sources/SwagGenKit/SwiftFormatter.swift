@@ -109,7 +109,8 @@ public class SwiftFormatter: CodeFormatter {
             case let .format(format):
                 switch format {
                 case .binary, .byte: return "String" // TODO: Data
-                case .dateTime, .date: return "Date"
+                case .dateTime: return "DateTime"
+                case .date: return "DayDate"
                 case .email, .hostname, .ipv4, .ipv6, .password: return "String"
                 case .uri: return "URL"
                 case .uuid: return "UUID"
